@@ -27,7 +27,7 @@
 
             <!-- Logo -->
             <div id="logo">
-                <h1><a href="#">Iridium</a></h1>
+                <h1><a href="#">AI News</a></h1>
                 <span>Design by TEMPLATED</span>
             </div>
 
