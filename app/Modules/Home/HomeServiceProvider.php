@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Modules\Home;
+
 use App\Modules\Home\Http\Controllers\HomeController;
 use App\Modules\Home\ViewModels\Contracts\HomeViewModelInterface;
 use App\Modules\Home\ViewModels\HomeViewModel;
@@ -9,15 +10,15 @@ use Illuminate\Support\Facades\Route;
 
 class HomeServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
         $this->app->bind(HomeViewModelInterface::class, HomeViewModel::class);
 
-        $this->routes();
+        $this->defineRoutes();
     }
 
-    private function routes()
+    private function defineRoutes(): void
     {
-        Route::get('/', [HomeController::class, 'home']);
+        Route::get('/', [HomeController::class, 'home'])->name('home');
     }
 }

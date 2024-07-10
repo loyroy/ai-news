@@ -2,8 +2,6 @@
 
 namespace App\Modules\Base\ViewModels;
 
-use Spatie\ViewModels\ViewModel;
-
 abstract class BaseViewModel
 {
     protected string $view;
