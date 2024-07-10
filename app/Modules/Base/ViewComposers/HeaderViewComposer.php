@@ -30,7 +30,7 @@ class HeaderViewComposer
     {
         return [
             [
-                'url' => $this->request->route('home'),
+                'url' => route('home'),
                 'name' => 'Home',
                 'active' => $this->request->routeIs('home'),
             ],
