@@ -2,7 +2,10 @@
 
 namespace App\Modules\Article\Repositories;
 
-class ArticleRepository
-{
+use App\Modules\Article\Models\Article;
+use App\Modules\Base\Repositories\BaseRepository;
 
+class ArticleRepository extends BaseRepository
+{
+    protected string $model = Article::class;
 }
