@@ -47,7 +47,7 @@
     <!-- Copyright -->
     <div id="copyright">
         <div class="container">
-            Site made with: <a href="https://templated.co/">Templated.co</a>
+            Front-end template provided by: <a href="https://templated.co/">Templated.co</a>
         </div>
     </div>
 </body>
