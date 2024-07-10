@@ -5,8 +5,8 @@ namespace App\Modules\Home;
 use App\Modules\Home\Http\Controllers\HomeController;
 use App\Modules\Home\ViewModels\Contracts\HomeViewModelInterface;
 use App\Modules\Home\ViewModels\HomeViewModel;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\ServiceProvider;
 
 class HomeServiceProvider extends ServiceProvider
 {

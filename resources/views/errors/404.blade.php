@@ -8,6 +8,5 @@
                 Did you get lost?
                 <a href="{{ route('home') }}">Click here to return home</a>.
             </span>
-        </header><a href="#" class="image full"><img src="images/pic07.jpg" alt=""
-                width="700" height="260"></a>
+        </header><a href="#" class="image full"><img src="images/pic07.jpg" alt="" width="700" height="260"></a>
 @endsection
