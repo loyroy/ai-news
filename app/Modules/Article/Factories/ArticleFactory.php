@@ -2,7 +2,9 @@
 
 namespace App\Modules\Article\Factories;
 
+use App\Modules\Article\Enums\ArticleLocation;
 use App\Modules\Article\Models\Article;
+use Carbon\Carbon;
 use Faker\Factory as Faker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\DB;
@@ -27,6 +29,8 @@ class ArticleFactory extends Factory
             'author_id' => $this->getRandomAuthorId(),
             'title' => $faker->text(mt_rand(20,50)),
             'content' => $faker->text(mt_rand(1000,5000)),
+            'location' => ArticleLocation::randomValue(),
+            'published_at' => Carbon::now(),
         ];
     }
 
