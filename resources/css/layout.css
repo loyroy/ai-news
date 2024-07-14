@@ -1,3 +1,7 @@
 #header {
     padding: 2em !important;
 }
+
+.no-link-styling {
+    text-decoration: none;
+}

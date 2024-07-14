@@ -14,10 +14,7 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
 
     public function getArticles(?ArticleLocation $articleLocation = null, ?int $offset = null): Collection
     {
-        $qb = $this->getQueryBuilder()
-            ->whereNotNull('published_at')
-            ->whereNull('deleted_at')
-            ->orderBy('published_at', 'DESC');
+        $qb = $this->getQueryBuilder();
 
         if($articleLocation) {
             $qb->where('location', $articleLocation->value);
@@ -26,6 +23,10 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
         if($offset) {
             $qb->offset($offset);
         }
+
+        $qb->whereNotNull('published_at')
+            ->whereNull('deleted_at')
+            ->orderBy('published_at', 'DESC');
 
         return $qb->get();
     }

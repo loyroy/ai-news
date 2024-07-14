@@ -9,7 +9,7 @@ use Illuminate\Support\Collection;
 
 interface ArticleRepositoryInterface extends BaseRepositoryInterface
 {
-    public function getArticles(?ArticleLocation $articleLocation = null): Collection;
+    public function getArticles(?ArticleLocation $articleLocation = null, ?int $offset = null): Collection;
 
     public function getFrontPageArticle(): Article;
 }
