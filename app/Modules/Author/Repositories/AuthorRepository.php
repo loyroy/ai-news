@@ -7,5 +7,5 @@ use App\Modules\Base\Repositories\BaseRepository;
 
 class AuthorRepository extends BaseRepository
 {
-    protected string $model = Author::class;
+    protected ?string $model = Author::class;
 }

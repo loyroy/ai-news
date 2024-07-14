@@ -2,31 +2,45 @@
 
 namespace App\Modules\Home\ViewModels;
 
+use App\Modules\Article\Models\Article;
+use App\Modules\Article\Repositories\Contracts\ArticleRepositoryInterface;
 use App\Modules\Base\ViewModels\BaseViewModel;
 use App\Modules\Home\ViewModels\Contracts\HomeViewModelInterface;
+use Carbon\Carbon;
 
 class HomeViewModel extends BaseViewModel implements HomeViewModelInterface
 {
     protected string $view = 'home';
 
+    public function __construct(
+        private readonly ArticleRepositoryInterface $articleRepository,
+    )
+    {
+    }
+
     public function process(): array
     {
         return [
-            'homeArticle' => $this->getHomeArticle(),
+            'homeArticle' => $this->processArticle($this->articleRepository->getFrontPageArticle()),
         ];
     }
 
-    private function getHomeArticle(): array
+    /**
+     * TODO: turn into transformer
+     *
+     * @param Article $article
+     * @return array
+     */
+    private function processArticle(Article $article): array
     {
         return [
-            'title'     => 'Welcome to AI News!',
-            'link'      => '#',
-            'image'     => 'images/pic07.jpg',
-            'subtitle'  => 'Fusce quis tortor. Consectetuer adipiscing elit. Nam pede erat, porta eu.',
-            'synopsis'  => 'Sed etiam vestibulum velit, euismod lacinia quam nisl id lorem. Quisque erat. Vestibulum
-            pellentesque, justo mollis pretium suscipit, justo nulla blandit libero, in blandit augue
-            justo quis nisl. Fusce mattis viverra elit. Fusce quis tortor. Consectetuer adipiscing elit.
-            Nam pede erat, porta eu, lobortis eget lorem ipsum dolor.',
+            'title'         => $article->title,
+            'content'       => $article->content,
+            'image'         => $article->image,
+            'published_at'  => Carbon::make($article->published_at)->toDateTimeString(),
+            'synopsis'      => trim(substr($article->content, 0, 500)) . '...',
+            'subtitle'      => trim(substr($article->content, 0, 100)) . '...',
+            'url'           => route('articles.show', $article->uuid),
         ];
     }
 }
