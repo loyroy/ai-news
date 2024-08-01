@@ -7,6 +7,4 @@ use Illuminate\Support\Collection;
 interface BaseRepositoryInterface
 {
     public function all(): Collection;
-
-    public function getModel(): ?string;
 }

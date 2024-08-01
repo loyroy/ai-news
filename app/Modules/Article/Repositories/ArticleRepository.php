@@ -2,7 +2,6 @@
 
 namespace App\Modules\Article\Repositories;
 
-use App\Modules\Article\Enums\ArticleLocation;
 use App\Modules\Article\Models\Article;
 use App\Modules\Article\Repositories\Contracts\ArticleRepositoryInterface;
 use App\Modules\Base\Repositories\BaseRepository;
@@ -12,21 +11,21 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
 {
     protected ?string $model = Article::class;
 
-    public function getArticles(?ArticleLocation $articleLocation = null, ?int $offset = null): Collection
+    public function getArticles(?int $offset = null, ?int $limit = null): Collection
     {
         $qb = $this->getQueryBuilder();
 
-        if($articleLocation) {
-            $qb->where('location', $articleLocation->value);
-        }
+        $qb->whereNotNull('published_at')
+            ->whereNull('deleted_at')
+            ->orderBy('published_at', 'DESC');
 
         if($offset) {
             $qb->offset($offset);
         }
 
-        $qb->whereNotNull('published_at')
-            ->whereNull('deleted_at')
-            ->orderBy('published_at', 'DESC');
+        if($limit) {
+            $qb->limit($limit);
+        }
 
         return $qb->get();
     }
@@ -34,7 +33,6 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
     public function getFrontPageArticle(): Article
     {
         return $this->getQueryBuilder()
-            ->where('location', ArticleLocation::NONE->value)
             ->whereNotNull('published_at')
             ->whereNull('deleted_at')
             ->orderBy('published_at', 'DESC')
