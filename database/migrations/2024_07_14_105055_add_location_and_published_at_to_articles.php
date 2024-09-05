@@ -13,7 +13,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('articles', function (Blueprint $table) {
-            $table->string('location')->default(ArticleLocation::NONE->value)->after('image');
             $table->timestamp('published_at')->nullable()->after('image');
         });
     }
@@ -24,7 +23,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('articles', function (Blueprint $table) {
-            $table->dropColumn('location');
             $table->dropColumn('published_at');
         });
     }

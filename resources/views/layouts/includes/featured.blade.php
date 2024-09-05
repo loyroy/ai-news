@@ -10,7 +10,7 @@
                         <img src="{{ $featuredArticle['image'] }}" alt="" width="314" height="144">
                     </a>
                     <p>
-                        {{ $featuredArticle['synopsis'] }}
+                        {{ $featuredArticle['title'] }}
                     </p>
                     <p>
                         <a href="{{ $featuredArticle['url'] }}" class="button">More Details</a>

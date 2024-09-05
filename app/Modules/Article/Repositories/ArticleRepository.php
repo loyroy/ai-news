@@ -15,9 +15,7 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
     {
         $qb = $this->getQueryBuilder();
 
-        $qb->whereNotNull('published_at')
-            ->whereNull('deleted_at')
-            ->orderBy('published_at', 'DESC');
+        $qb->orderBy('published_at', 'DESC');
 
         if($offset) {
             $qb->offset($offset);
@@ -33,9 +31,14 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
     public function getFrontPageArticle(): Article
     {
         return $this->getQueryBuilder()
-            ->whereNotNull('published_at')
-            ->whereNull('deleted_at')
             ->orderBy('published_at', 'DESC')
+            ->first();
+    }
+
+    public function findByUuid(string $uuid): ?Article
+    {
+        return $this->getQueryBuilder()
+            ->where('uuid', $uuid)
             ->first();
     }
 }

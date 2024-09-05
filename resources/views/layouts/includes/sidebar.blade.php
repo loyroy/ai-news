@@ -11,7 +11,7 @@
                         <p class="posted">{{ $sidebarArticle['published_at'] }}</p>
                         <img src="{{ $sidebarArticle['image'] }}" alt="" width="70" height="70">
                         <p class="text">
-                            {{ $sidebarArticle['subtitle'] }}
+                            {{ $sidebarArticle['title'] }}
                         </p>
                     </a>
                 </li>

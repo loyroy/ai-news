@@ -19,17 +19,30 @@ abstract class BaseRepository implements BaseRepositoryInterface
     /**
      * @throws BindingResolutionException
      */
-    protected function getQueryBuilder(): Builder
+    protected function getQueryBuilder(bool $filtersEnabled = true): Builder
     {
-        if(!$this->getModel()) {
+        if (!$this->getModel()) {
             throw new \Exception('property $model not set.');
         }
 
-        return app()->make($this->getModel())->newModelQuery();
+        $queryBuilder = app()->make($this->getModel())->newModelQuery();
+
+        if ($filtersEnabled) {
+            $this->addFilterQuery($queryBuilder);
+        }
+
+        return $queryBuilder;
     }
 
     private function getModel(): ?string
     {
         return $this->model;
+    }
+
+    private function addFilterQuery($queryBuilder): void
+    {
+        $queryBuilder
+            ->whereNotNull('published_at')
+            ->whereNull('deleted_at');
     }
 }

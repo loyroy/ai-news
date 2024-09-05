@@ -8,6 +8,8 @@ use App\Modules\Article\Repositories\ArticleRepository;
 use App\Modules\Article\Repositories\Contracts\ArticleRepositoryInterface;
 use App\Modules\Article\Transformers\ArticleTransformer;
 use App\Modules\Article\Transformers\Contracts\ArticleTransformerInterface;
+use App\Modules\Article\ViewModels\ArticleViewModel;
+use App\Modules\Article\ViewModels\Contracts\ArticleViewModelInterface;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -24,6 +26,7 @@ class ArticleServiceProvider extends ServiceProvider
         $this->app->bind(ArticleRepositoryInterface::class, ArticleRepository::class);
         $this->app->bind(ArticleControllerInterface::class, ArticleController::class);
         $this->app->bind(ArticleTransformerInterface::class, ArticleTransformer::class);
+        $this->app->bind(ArticleViewModelInterface::class, ArticleViewModel::class);
     }
 
     private function routes(): void

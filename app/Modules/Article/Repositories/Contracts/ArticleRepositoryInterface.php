@@ -11,4 +11,6 @@ interface ArticleRepositoryInterface extends BaseRepositoryInterface
     public function getArticles(?int $offset = null): Collection;
 
     public function getFrontPageArticle(): Article;
+
+    public function findByUuid(string $uuid): ?Article;
 }

@@ -27,9 +27,8 @@ class ArticleFactory extends Factory
 
         return [
             'author_id' => $this->getRandomAuthorId(),
-            'title' => $faker->text(mt_rand(20,50)),
+            'title' => $faker->text(mt_rand(75,150)),
             'content' => $faker->text(mt_rand(1000,5000)),
-            'location' => ArticleLocation::randomValue(),
             'published_at' => Carbon::now(),
         ];
     }
