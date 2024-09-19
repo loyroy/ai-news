@@ -8,7 +8,7 @@
         </header><a href="#" class="image full"><img src="{{ $article['image'] }}" alt=""
                 width="700" height="260"></a>
         <p>
-            {{ $article['content'] }}
+            {!! $article['content'] !!}
         </p>
     </section>
 @endsection

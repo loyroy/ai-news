@@ -30,6 +30,8 @@ class ArticleFactory extends Factory
             'title' => $faker->text(mt_rand(75,150)),
             'content' => $faker->text(mt_rand(1000,5000)),
             'published_at' => Carbon::now(),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ];
     }
 

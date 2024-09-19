@@ -5,6 +5,7 @@ namespace App\Modules\Article\Transformers;
 use App\Modules\Article\Models\Article;
 use App\Modules\Article\Transformers\Contracts\ArticleTransformerInterface;
 use App\Modules\Base\Transformers\BaseTransformer;
+use App\Modules\OpenAI\Actions\CreateArticleAction;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -21,15 +22,26 @@ class ArticleTransformer extends BaseTransformer implements ArticleTransformerIn
         $currentUrlUuid = $this->request->get('uuid');
         $active = $currentUrlUuid && $currentUrlUuid === $article->uuid;
 
+        $synopsisWithTags = trim(substr($article->content, 0, 500)) . '...';
+        $subtitleWithTags = trim(substr($article->content, 0, 100)) . '...';
+
         return [
             'title'         => $article->title,
             'content'       => $article->content,
             'image'         => $article->image,
             'published_at'  => Carbon::make($article->published_at)->toRfc850String(),
-            'synopsis'      => trim(substr($article->content, 0, 500)) . '...',
-            'subtitle'      => trim(substr($article->content, 0, 100)) . '...',
+            'synopsis'      => $this->removeParagraphTags($synopsisWithTags),
+            'subtitle'      => $this->removeParagraphTags($subtitleWithTags),
             'url'           => route('articles.show', $article->uuid),
             'active'        => $active,
         ];
+    }
+
+    private function removeParagraphTags(string $input): string
+    {
+        $output = str_replace(CreateArticleAction::ARTICLE_PARAGRAPH_TAG, '', $input);
+        $output = str_replace('</p>', '', $output);
+
+        return trim($output);
     }
 }
