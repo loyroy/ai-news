@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Modules\Article\Seeders\ArticleSeeder;
-use App\Modules\Author\Seeders\AuthorSeeder;
 use Illuminate\Database\Seeder;
 
+/**
+ * @deprecated
+ */
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -13,9 +14,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call([
-            AuthorSeeder::class,
-            ArticleSeeder::class,
-        ]);
+        // Do not use this, use the command instead.
     }
 }

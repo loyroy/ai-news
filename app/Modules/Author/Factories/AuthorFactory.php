@@ -23,8 +23,7 @@ class AuthorFactory extends Factory
         $faker = Faker::create();
 
         return [
-            'first_name' => $faker->firstName(),
-            'last_name' => $faker->lastName(),
+            'name' => $faker->firstName() . ' ' . $faker->lastName(),
         ];
     }
 }

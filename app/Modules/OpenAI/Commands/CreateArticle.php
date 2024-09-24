@@ -74,5 +74,6 @@ class CreateArticle extends Command
         }
 
         $progressBar->finish();
+        $this->newLine();
     }
 }
