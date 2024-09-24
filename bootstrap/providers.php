@@ -5,6 +5,7 @@ use App\Modules\Author\AuthorServiceProvider;
 use App\Modules\Base\BaseServiceProvider;
 use App\Modules\Home\HomeServiceProvider;
 use App\Modules\OpenAI\OpenAIServiceProvider;
+use App\Modules\Pexels\PexelsServiceProvider;
 
 return [
     App\Providers\AppServiceProvider::class,
@@ -13,4 +14,5 @@ return [
     ArticleServiceProvider::class,
     AuthorServiceProvider::class,
     OpenAIServiceProvider::class,
+    PexelsServiceProvider::class,
 ];

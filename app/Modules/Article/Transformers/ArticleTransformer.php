@@ -5,7 +5,7 @@ namespace App\Modules\Article\Transformers;
 use App\Modules\Article\Models\Article;
 use App\Modules\Article\Transformers\Contracts\ArticleTransformerInterface;
 use App\Modules\Base\Transformers\BaseTransformer;
-use App\Modules\OpenAI\Actions\CreateArticleAction;
+use App\Modules\OpenAI\Actions\GenerateArticleAction;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -39,7 +39,7 @@ class ArticleTransformer extends BaseTransformer implements ArticleTransformerIn
 
     private function removeParagraphTags(string $input): string
     {
-        $output = str_replace(CreateArticleAction::ARTICLE_PARAGRAPH_TAG, '', $input);
+        $output = str_replace(GenerateArticleAction::ARTICLE_PARAGRAPH_TAG, '', $input);
         $output = str_replace('</p>', '', $output);
 
         return trim($output);

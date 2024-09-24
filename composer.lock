@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "964b765bc0cc4e2db44d538aba0709df",
+    "content-hash": "1835db529d4be7dfa0ff728fd4a5b1a9",
     "packages": [
         {
             "name": "brick/math",
@@ -5997,6 +5997,179 @@
                 }
             ],
             "time": "2022-03-08T17:03:00+00:00"
+        },
+        {
+            "name": "webeweb/core-library",
+            "version": "v9.6.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webeweb/core-library.git",
+                "reference": "3d55f6a32793692d82c358487d9ec803d83ccec0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webeweb/core-library/zipball/3d55f6a32793692d82c358487d9ec803d83ccec0",
+                "reference": "3d55f6a32793692d82c358487d9ec803d83ccec0",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-dom": "*",
+                "ext-fileinfo": "*",
+                "ext-gd": "*",
+                "ext-imagick": "*",
+                "ext-intl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-pdo": "*",
+                "ext-posix": "*",
+                "ext-zip": "*",
+                "guzzlehttp/guzzle": "^6.0|^7.0",
+                "php": "^7.1|^8.0",
+                "psr/log": "^1.0|^2.0|^3.0"
+            },
+            "require-dev": {
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan": "^1.4",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpunit/phpunit": "^7.0|^9.0"
+            },
+            "suggest": {
+                "ext-ftp": "For usage of WBW\\Library\\Ftp\\Client classes"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "9.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "WBW\\Library\\Ftp\\": "lib/ftp/",
+                    "WBW\\Library\\Curl\\": "lib/curl/",
+                    "WBW\\Library\\Adoria\\": "lib/adoria/",
+                    "WBW\\Library\\Ciqual\\": "lib/ciqual/",
+                    "WBW\\Library\\Common\\": "src",
+                    "WBW\\Library\\OcrLad\\": "lib/ocrlad/",
+                    "WBW\\Library\\Widget\\": "lib/widget/",
+                    "WBW\\Library\\Easilys\\": "lib/easilys/",
+                    "WBW\\Library\\SkiData\\": "lib/skidata/",
+                    "WBW\\Library\\Quadratus\\": "lib/quadratus/",
+                    "WBW\\Library\\Highcharts\\": "lib/highcharts/",
+                    "WBW\\Library\\QueryBuilder\\": "lib/querybuilder/"
+                },
+                "exclude-from-classmap": [
+                    "/lib/adoria/Tests/",
+                    "/lib/ciqual/Tests/",
+                    "/lib/curl/Tests/",
+                    "/lib/easilys/Tests/",
+                    "/lib/ftp/Tests/",
+                    "/lib/highcharts/Tests/",
+                    "/lib/ocrlad/Tests/",
+                    "/lib/quadratus/Tests/",
+                    "/lib/querybuilder/Tests/",
+                    "/lib/skidata/Tests/",
+                    "/lib/widget/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "webeweb",
+                    "homepage": "https://github.com/webeweb"
+                }
+            ],
+            "description": "Core library",
+            "homepage": "https://github.com/webeweb/core-library",
+            "keywords": [
+                "adoria",
+                "cipher",
+                "curl",
+                "datatabase",
+                "exception",
+                "ftp",
+                "library",
+                "logger",
+                "math",
+                "quadratus",
+                "security",
+                "skidata",
+                "sorter",
+                "trait",
+                "utility",
+                "validator",
+                "webeweb",
+                "widget"
+            ],
+            "support": {
+                "issues": "https://github.com/webeweb/core-library/issues",
+                "source": "https://github.com/webeweb/core-library/tree/v9.6.1"
+            },
+            "time": "2024-06-12T16:12:44+00:00"
+        },
+        {
+            "name": "webeweb/pexels-library",
+            "version": "v3.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webeweb/pexels-library.git",
+                "reference": "67195a44b89ce972f7b387c1bd53dc6e5a0a3ae0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webeweb/pexels-library/zipball/67195a44b89ce972f7b387c1bd53dc6e5a0a3ae0",
+                "reference": "67195a44b89ce972f7b387c1bd53dc6e5a0a3ae0",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^6.0|^7.0",
+                "php": "^7.1|^8.0",
+                "psr/log": "^1.0|^2.0|^3.0",
+                "webeweb/core-library": "^9.0"
+            },
+            "require-dev": {
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan": "^1.4",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpunit/phpunit": "^7.0|^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "WBW\\Library\\Pexels\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "webeweb",
+                    "homepage": "https://github.com/webeweb"
+                }
+            ],
+            "description": "Integrate Pexels API with your projects",
+            "homepage": "https://github.com/webeweb/pexels-library",
+            "keywords": [
+                "library",
+                "pexels",
+                "webeweb"
+            ],
+            "support": {
+                "issues": "https://github.com/webeweb/pexels-library/issues",
+                "source": "https://github.com/webeweb/pexels-library/tree/v3.7.1"
+            },
+            "time": "2024-05-28T09:27:34+00:00"
         },
         {
             "name": "webmozart/assert",

@@ -41,4 +41,10 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
             ->where('uuid', $uuid)
             ->first();
     }
+
+    public function update(string $uuid, array $values): void
+    {
+        $this->findByUuid($uuid)
+            ->update($values);
+    }
 }

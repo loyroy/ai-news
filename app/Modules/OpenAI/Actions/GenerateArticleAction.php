@@ -3,12 +3,12 @@
 namespace App\Modules\OpenAI\Actions;
 
 use App\Modules\Article\Models\Article;
-use App\Modules\OpenAI\Actions\Contracts\CreateArticleActionInterface;
+use App\Modules\OpenAI\Actions\Contracts\GenerateArticleActionInterface;
 use App\Modules\OpenAI\Models\ParsedOpenAIResponseModel;
 use OpenAI\Laravel\Facades\OpenAI;
 use OpenAI\Responses\Chat\CreateResponseChoice;
 
-class CreateArticleAction implements CreateArticleActionInterface
+class GenerateArticleAction implements GenerateArticleActionInterface
 {
     public const ARTICLE_PARAGRAPH_TAG = "<p class='article-paragraph'>";
     private const TITLE_SEPARATOR = '&&&';
@@ -16,15 +16,22 @@ class CreateArticleAction implements CreateArticleActionInterface
     private const IMAGE_DESCRIPTION_SEPARATOR = '^^^';
     private const SATIRICAL_ARTICLE_PROMPT = "Please generate a satirical and slightly absurdist news article for me. Surround the title with ‘" . self::TITLE_SEPARATOR . "’, and surround each paragraph with '" . self::PARAGRAPH_SEPARATOR . "'. Please also include one realistic but very short and simple (8 words maximum) description of a generic image that would go with this article at the end, and surround that description with ‘" . self::IMAGE_DESCRIPTION_SEPARATOR . "’. This description should be generic and real enough that when using this description as a search query for stock images, a relevant image will be the first result.";
 
+    private ?Article $generatedArticle = null;
+
+    private ?string $generatedImageDescription = null;
+
     public function execute(): void
     {
         $rawResponse = $this->getResponse();
         $parsedResponse = $this->parseResponse($rawResponse);
 
-        Article::factory()->create([
+        $article = Article::factory()->create([
             'title' => $parsedResponse->getTitle(),
             'content' => $parsedResponse->getContent(),
         ]);
+
+        $this->setGeneratedArticle($article);
+        $this->setGeneratedImageDescription($parsedResponse->getImageDescription());
     }
 
     private function getResponse(): string
@@ -80,5 +87,25 @@ class CreateArticleAction implements CreateArticleActionInterface
         }
 
         return $content;
+    }
+
+    public function getGeneratedArticle(): ?Article
+    {
+        return $this->generatedArticle;
+    }
+
+    public function setGeneratedArticle(?Article $generatedArticle): void
+    {
+        $this->generatedArticle = $generatedArticle;
+    }
+
+    public function getGeneratedImageDescription(): ?string
+    {
+        return $this->generatedImageDescription;
+    }
+
+    public function setGeneratedImageDescription(?string $generatedImageDescription): void
+    {
+        $this->generatedImageDescription = $generatedImageDescription;
     }
 }
