@@ -39,10 +39,9 @@ abstract class BaseRepository implements BaseRepositoryInterface
         return $this->model;
     }
 
-    private function addFilterQuery($queryBuilder): void
+    protected function addFilterQuery($queryBuilder): void
     {
         $queryBuilder
-            ->whereNotNull('published_at')
             ->whereNull('deleted_at');
     }
 }

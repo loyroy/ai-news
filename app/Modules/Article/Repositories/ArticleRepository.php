@@ -47,4 +47,12 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
         $this->findByUuid($uuid)
             ->update($values);
     }
+
+    protected function addFilterQuery($queryBuilder): void
+    {
+        parent::addFilterQuery($queryBuilder);
+
+        $queryBuilder
+            ->whereNotNull('published_at');
+    }
 }
