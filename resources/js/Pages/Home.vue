@@ -13,7 +13,7 @@ async function getArticle() {
     <div>
         <h1>HOME</h1>
         <router-link to="/article"> Take me to article detail page </router-link>
-        <button @click="getArticle">Trigger Endpoint</button>
+        <button class="btn btn-primary" @click="getArticle">Trigger Endpoint</button>
         <div v-if="article">
 
             <h2>{{ article.title }}</h2>
