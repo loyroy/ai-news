@@ -1,7 +1,7 @@
 import './bootstrap';
+import router from "./router.js";
+import { createApp } from "vue";
 
-/** Iridium template imports */
-import './iridium/init';
-import './iridium/skel';
-import './iridium/skel-panels';
-import './iridium/html5shiv';
+import App from "./App.vue";
+
+createApp(App).use(router).mount("#app");

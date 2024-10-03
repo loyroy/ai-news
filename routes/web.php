@@ -1,6 +1,7 @@
 <?php
 
-\Illuminate\Support\Facades\Route::get('/create-article-test', function() {
-    \Illuminate\Support\Facades\Artisan::call('app:create-article');
-    return \Illuminate\Support\Facades\Artisan::output();
-});
+use Illuminate\Support\Facades\Route;
+
+Route::get('/{vue_capture?}', function () {
+    return view('home');
+})->where('vue_capture', '[\/\w\.-]*');
