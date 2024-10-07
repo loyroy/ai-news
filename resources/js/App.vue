@@ -1,5 +1,9 @@
+<script setup>
+    import Header from "./components/Header.vue";
+</script>
 <template>
-    <router-view v-slot="{ Component, route }">
+    <Header/>
+    <router-view v-slot="{ Component, route }" class="router-view">
         <div :key="route.name">
             <Component :is="Component" />
         </div>
