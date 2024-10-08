@@ -26,13 +26,12 @@ class ArticleServiceProvider extends ServiceProvider
         $this->app->bind(ArticleRepositoryInterface::class, ArticleRepository::class);
         $this->app->bind(ArticleControllerInterface::class, ArticleController::class);
         $this->app->bind(ArticleTransformerInterface::class, ArticleTransformer::class);
-        $this->app->bind(ArticleViewModelInterface::class, ArticleViewModel::class);
     }
 
     private function routes(): void
     {
-        Route::group(['prefix' => 'articles', 'as' => 'articles.'], function() {
-            Route::get('{uuid}', [ArticleControllerInterface::class, 'show'])->name('show');
+        Route::group(['prefix' => 'api/articles', 'middleware' => 'api', 'as' => 'articles.'], function() {
+            Route::get('index', [ArticleController::class, 'index']);
         });
     }
 }

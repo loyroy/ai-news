@@ -26,13 +26,13 @@ class ArticleTransformer extends BaseTransformer implements ArticleTransformerIn
         $subtitleWithTags = trim(substr($article->content, 0, 100)) . '...';
 
         return [
+            'uuid'          => $article->uuid,
             'title'         => $article->title,
             'content'       => $article->content,
             'image'         => $article->image,
             'published_at'  => Carbon::make($article->published_at)->toRfc850String(),
             'synopsis'      => $this->removeParagraphTags($synopsisWithTags),
             'subtitle'      => $this->removeParagraphTags($subtitleWithTags),
-            'url'           => route('articles.show', $article->uuid),
             'active'        => $active,
         ];
     }
