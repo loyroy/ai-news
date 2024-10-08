@@ -8,7 +8,7 @@ use Illuminate\Support\Collection;
 
 interface ArticleRepositoryInterface extends BaseRepositoryInterface
 {
-    public function getArticles(?int $offset = null): Collection;
+    public function getArticles(?int $offset = null, ?int $limit = null): Collection;
 
     public function getFrontPageArticle(): Article;
 

@@ -31,7 +31,7 @@ class ArticleServiceProvider extends ServiceProvider
     private function routes(): void
     {
         Route::group(['prefix' => 'api/articles', 'middleware' => 'api', 'as' => 'articles.'], function() {
-            Route::get('index', [ArticleController::class, 'index']);
+            Route::get('index', [ArticleController::class, 'index'])->name('index');
         });
     }
 }

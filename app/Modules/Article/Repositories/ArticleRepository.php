@@ -15,15 +15,12 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
     {
         $qb = $this->getQueryBuilder();
 
-        $qb->orderBy('published_at', 'DESC');
-
-        if($offset) {
+        if($offset & $limit) {
             $qb->offset($offset);
-        }
-
-        if($limit) {
             $qb->limit($limit);
         }
+
+        $qb->orderBy('published_at', 'DESC');
 
         return $qb->get();
     }

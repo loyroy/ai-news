@@ -23,7 +23,7 @@ class ArticleTransformer extends BaseTransformer implements ArticleTransformerIn
         $active = $currentUrlUuid && $currentUrlUuid === $article->uuid;
 
         $synopsisWithTags = trim(substr($article->content, 0, 500)) . '...';
-        $subtitleWithTags = trim(substr($article->content, 0, 100)) . '...';
+        $subtitleWithTags = trim(substr($article->content, 0, 200)) . '...';
 
         return [
             'uuid'          => $article->uuid,
