@@ -15,7 +15,7 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
     {
         $qb = $this->getQueryBuilder();
 
-        if($offset & $limit) {
+        if($offset !== null & $limit) {
             $qb->offset($offset);
             $qb->limit($limit);
         }

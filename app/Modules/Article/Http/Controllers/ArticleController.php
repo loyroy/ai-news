@@ -27,4 +27,12 @@ class ArticleController implements ArticleControllerInterface
 
         return $this->responseFactory->json($transformedArticles);
     }
+
+    public function show(string $uuid): JsonResponse
+    {
+        $article = $this->articleRepository->findByUuid($uuid);
+        $transformedArticle = $this->articleTransformer->transform($article);
+
+        return $this->responseFactory->json($transformedArticle);
+    }
 }
